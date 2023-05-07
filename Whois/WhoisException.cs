@@ -19,7 +19,7 @@ namespace Whois
         {
             get
             {
-                return $"{base.Message}{Environment.NewLine}{Environment.NewLine}Please log issues at:{Environment.NewLine}https://github.com/flipbit/whois/issues";
+                return $"{base.Message}{Environment.NewLine}";
             }
         }
     }

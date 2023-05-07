@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-   <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
    <Version>3.0.1.0</Version>
    <PackageVersion>3.0.1</PackageVersion>
@@ -11,6 +10,8 @@
    <Description>A .NET Framework 4.5.2 and Standard 2.0 WHOIS Lookup and Parsing Library</Description>
    <Copyright>Chris Wood 2021</Copyright>
    <RootNamespace>Whois</RootNamespace>
+   <TargetFramework>net7.0</TargetFramework>
+   <LangVersion>11</LangVersion>
     
   </PropertyGroup>
   <ItemGroup>
@@ -676,7 +677,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LibLog" Version="5.0.6">
+    <PackageReference Include="LibLog" Version="5.0.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>

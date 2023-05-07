@@ -13,9 +13,7 @@ namespace Whois.Servers
     public class IanaServerLookup : IWhoisServerLookup
     {
         private const string IanaUrl = "whois.iana.org";
-        
         private static readonly ILog Log = LogProvider.GetCurrentClassLogger();
-
         private readonly Lazy<TokenMatcher> ianaTemplate;
         private readonly ResourceReader resourceReader;
 
@@ -54,21 +52,19 @@ namespace Whois.Servers
             var matcher = ianaTemplate.Value;
             var result = matcher.Match<WhoisResponse>(content);
 
-            if (result.Success)
-            {
-                var match = result.BestMatch.Value;
+            if (!result.Success)
+                return new WhoisResponse
+                {
+                    Content = content,
+                    DomainName = new HostName(tld),
+                    Status = WhoisStatus.Unknown
+                };
+            var match = result.BestMatch.Value;
 
-                match.Content = content;
+            match.Content = content;
 
-                return match;
-            }
+            return match;
 
-            return new WhoisResponse
-            {
-                Content = content,
-                DomainName = new HostName(tld), 
-                Status = WhoisStatus.Unknown
-            };
         }
 
         private async Task<string> Download(string tld, WhoisRequest request)

@@ -12,7 +12,6 @@ namespace Whois.Net
     public class TcpReader : ITcpReader
     {
         private TcpClient tcpClient;
-
         private StreamReader reader;
         private StreamWriter writer;
 

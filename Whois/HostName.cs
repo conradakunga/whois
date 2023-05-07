@@ -43,7 +43,7 @@ namespace Whois
         /// <summary>
         /// Determines if the host name is an internet Top Level Domain (TLD)
         /// </summary>
-        public bool IsTld => Value.Contains(".") == false;
+        public bool IsTld => Value.Contains('.') == false;
 
         /// <summary>
         /// Gets the TLD part of the hostname, e.g. "com" for "example.com"

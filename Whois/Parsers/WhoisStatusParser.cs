@@ -61,18 +61,12 @@ namespace Whois.Parsers
             if (Equals(status, "210 PendingRelease")) return WhoisStatus.Other;
             if (Equals(status, "440 Request Denied")) return WhoisStatus.Throttled;
 
-            if (whoisServer == "whois.dns.pt")
+            return whoisServer switch
             {
-                if (Equals(status, "TECH-PRO")) return WhoisStatus.Other;
-            }
-
-            if (whoisServer == "whois.iis.se")
-            {
-                if (Equals(status, "system")) return WhoisStatus.NotAssigned;
-            }
-
-
-            return existing;
+                "whois.dns.pt" when Equals(status, "TECH-PRO") => WhoisStatus.Other,
+                "whois.iis.se" when Equals(status, "system") => WhoisStatus.NotAssigned,
+                _ => existing
+            };
         }
 
         private static bool Equals(string status, string value)

@@ -172,11 +172,15 @@ namespace Whois
 
         private bool SeenServer(HostName whoisServer, int depth)
         {
-            // Referral limit
-            if (depth > 255) return true;
-
-            // Ignore top level request
-            if (depth == 0) return Referrer?.SeenServer(whoisServer, 1) ?? false;
+            switch (depth)
+            {
+                // Referral limit
+                case > 255:
+                    return true;
+                // Ignore top level request
+                case 0:
+                    return Referrer?.SeenServer(whoisServer, 1) ?? false;
+            }
 
 
             if (WhoisServer.IsEqualTo(whoisServer))

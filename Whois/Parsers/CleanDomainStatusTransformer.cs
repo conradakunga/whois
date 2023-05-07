@@ -18,10 +18,10 @@ namespace Whois.Parsers
 
             var valueString = value.ToString();
 
-            var index = valueString.IndexOf("(http", StringComparison.InvariantCultureIgnoreCase);
+            var index = valueString!.IndexOf("(http", StringComparison.InvariantCultureIgnoreCase);
             if (index > -1)
             {
-                transformed = valueString.Substring(0, index).Trim();
+                transformed = valueString![..index].Trim();
                 return true;
             }
 

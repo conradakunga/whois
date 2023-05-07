@@ -1,12 +1,11 @@
-﻿using System;
-using Tokens.Transformers;
+﻿using Tokens.Transformers;
 
 namespace Whois.Parsers
 {
     /// <summary>
-    /// Converts a string into a <see cref="HostName"/.
+    /// Converts a string into a <see cref="HostName"/>
     /// </summary>
-    public class ToHostNameTransformer : ITokenTransformer
+    public abstract  class ToHostNameTransformer : ITokenTransformer
     {
         public bool CanTransform(object value, string[] args, out object transformed)
         {
